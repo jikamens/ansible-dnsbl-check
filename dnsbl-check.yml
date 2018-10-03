@@ -1,0 +1,31 @@
+---
+- hosts:
+  - dnsbl-check-hosts
+  tasks:
+  - apt: name='{{item}}'
+    with_items:
+    - bind9-host
+    - coreutils
+    - curl
+    - gawk
+    - perl
+    when: ansible_distribution == 'Ubuntu'
+
+  - yum: name='{{item}}'
+    with_items:
+    - bind-utils
+    - coreutils
+    - curl
+    - gawk
+    - perl
+    when: ansible_distribution == 'CentOS'
+
+  - copy:
+      src: dnsbls
+      dest: /etc/dnsbls
+
+  - copy:
+      src: dnsbl-check.sh
+      dest: /etc/cron.hourly/dnsbl-check
+      mode: 0755
+

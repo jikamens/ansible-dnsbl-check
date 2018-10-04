@@ -2,22 +2,17 @@
 - hosts:
   - dnsbl-check-hosts
   tasks:
-  - apt: name='{{item}}'
-    with_items:
-    - bind9-host
-    - coreutils
-    - curl
-    - gawk
-    - perl
+  - package:
+      name:
+      - coreutils
+      - curl
+      - gawk
+      - perl
+
+  - apt: name=bind9-host
     when: ansible_distribution == 'Ubuntu'
 
-  - yum: name='{{item}}'
-    with_items:
-    - bind-utils
-    - coreutils
-    - curl
-    - gawk
-    - perl
+  - yum: name=bind-utils
     when: ansible_distribution == 'CentOS' or ansible_distribution == 'Fedora'
 
   - copy:

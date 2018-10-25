@@ -45,7 +45,7 @@ comm -12 /tmp/resolved.$$ /tmp/ifconfig.$$ >| /tmp/both.$$
 while read addr; do
     reverse_ip=`addrtoquery "$addr"`
     while read dnsbl; do
-        if output="$(host -W 5 $reverse_ip.$dnsbl 2>&1)"; then
+        if output="$(host -W 5 $reverse_ip.$dnsbl 8.8.8.8 2>&1)"; then
             if [ -n "$output" ]; then
                 echo "$host ($addr) is listed in $dnsbl"
                 echo Lookup output:

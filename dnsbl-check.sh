@@ -2,6 +2,8 @@
 
 verbose=false
 
+set -o pipefail
+
 PERL_ADDR_TO_QUERY='
 use English;
 
@@ -45,7 +47,8 @@ comm -12 /tmp/resolved.$$ /tmp/ifconfig.$$ >| /tmp/both.$$
 while read addr; do
     reverse_ip=`addrtoquery "$addr"`
     while read dnsbl; do
-        if output="$(host -W 5 $reverse_ip.$dnsbl 8.8.8.8 2>&1)"; then
+        if output="$(host -W 5 $reverse_ip.$dnsbl 8.8.8.8 2>&1 |
+                     grep 'has address')"; then
             if [ -n "$output" ]; then
                 echo "$host ($addr) is listed in $dnsbl"
                 echo Lookup output:
@@ -60,4 +63,3 @@ while read addr; do
 done < /tmp/both.$$
 
 rm -f /tmp/*.$$
-

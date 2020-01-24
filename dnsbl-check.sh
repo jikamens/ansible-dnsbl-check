@@ -46,14 +46,25 @@ comm -12 /tmp/resolved.$$ /tmp/ifconfig.$$ >| /tmp/both.$$
 
 while read addr; do
     reverse_ip=`addrtoquery "$addr"`
-    while read dnsbl; do
+    while read dnsbl ok_results; do
         if output="$(host -W 5 $reverse_ip.$dnsbl 8.8.8.8 2>&1 |
                      grep 'has address')"; then
             if [ -n "$output" ]; then
-                echo "$host ($addr) is listed in $dnsbl"
-                echo Lookup output:
-                echo "$output"
-                continue
+                if [ -n "$ok_results" ]; then
+                    dnsbl_addr="$(echo "$output" | awk 'NR==1{print $NF}')"
+                    for ok_addr in $ok_results; do
+                        if [ "$ok_addr" = "$dnsbl_addr" ]; then
+                            output=""
+                            break
+                        fi
+                    done
+                fi
+                if [ -n "$output" ]; then
+                    echo "$host ($addr) is listed in $dnsbl"
+                    echo Lookup output:
+                    echo "$output"
+                    continue
+                fi
             fi
         fi
         if $verbose; then

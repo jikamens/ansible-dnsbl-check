@@ -6,7 +6,6 @@ access.redhawk.org
 accredit.habeas.com
 admin.bl.kundenserver.de
 all.dnsbl.bit.nl
-all.rbl.webiron.net
 all.s5h.net
 all.spam-rbl.fr
 all.spamrats.com
@@ -15,7 +14,6 @@ aspath.routeviews.org
 aspews.ext.sorbs.net
 auth.spamrats.com
 b.barracudacentral.org
-babl.rbl.webiron.net
 backscatter.spameatingmonkey.net
 bb.barracudacentral.org
 bitonly.dnsbl.bit.nl
@@ -54,13 +52,11 @@ blocked.hilli.dk
 bogons.cymru.com
 bsb.empty.us
 bsb.spamlookup.net
-cabl.rbl.webiron.net
 cart00ney.surriel.com
 cbl.abuseat.org
 cblless.anti-spam.org.cn
 cidr.bl.mcafee.com
 combined.rbl.msrbl.net
-crawler.rbl.webiron.net
 csi.cloudmark.com
 db.wpbl.info
 dev.null.dk
@@ -258,7 +254,6 @@ spamrbl.imp.ch
 spamsources.fabel.dk
 srn.surgate.net
 st.technovision.dk
-stabl.rbl.webiron.net
 superblock.ascams.com
 swl.spamhaus.org
 tor.dan.me.uk

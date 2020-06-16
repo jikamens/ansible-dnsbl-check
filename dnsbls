@@ -131,7 +131,7 @@ gl.suomispam.net
 hartkore.dnsbl.tuxad.de
 hil.habeas.com
 hog.blackhole.cantv.net
-hostkarma.junkemailfilter.com 127.0.1.1
+hostkarma.junkemailfilter.com 127.0.1.1 127.0.0.5
 http.dnsbl.sorbs.net
 httpbl.abuse.ch
 hul.habeas.com

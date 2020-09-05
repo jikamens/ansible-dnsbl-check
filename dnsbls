@@ -30,7 +30,7 @@ bl.konstant.no
 bl.mailspike.net
 bl.mav.com.br
 bl.mipspace.com
-bl.nordspam.com
+bl.nordspam.com 127.0.0.1
 bl.nosolicitado.org
 bl.nszones.com
 bl.octopusdns.com

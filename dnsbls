@@ -17,10 +17,6 @@ b.barracudacentral.org
 backscatter.spameatingmonkey.net
 bb.barracudacentral.org
 bitonly.dnsbl.bit.nl
-bl-h1.rbl.polspam.pl
-bl-h2.rbl.polspam.pl
-bl-h3.rbl.polspam.pl
-bl-h4.rbl.polspam.pl
 bl.0spam.org
 bl.blocklist.de
 bl.drmx.org
@@ -34,7 +30,6 @@ bl.nordspam.com 127.0.0.1
 bl.nosolicitado.org
 bl.nszones.com
 bl.octopusdns.com
-bl.rbl.polspam.pl
 bl.scientificspam.net
 bl.score.senderscore.com
 bl.spamcop.net
@@ -42,7 +37,6 @@ bl.spameatingmonkey.net
 bl.suomispam.net
 bl.tiopan.com
 bl.worst.nosolicitado.org
-bl6.rbl.polspam.pl
 black.dnsbl.brukalai.lt
 black.junkemailfilter.com
 blackholes.scconsult.com
@@ -63,7 +57,6 @@ cart00ney.surriel.com
 cbl.abuseat.org
 cblless.anti-spam.org.cn
 cidr.bl.mcafee.com
-cnkr.rbl.polspam.pl
 combined.rbl.msrbl.net
 csi.cloudmark.com
 db.wpbl.info
@@ -111,7 +104,6 @@ dul.dnsbl.sorbs.net
 dul.pacifier.net
 dul.ru
 dyn.nszones.com
-dyn.rbl.polspam.pl
 dyna.spamrats.com
 escalations.dnsbl.sorbs.net
 eswlrev.dnsbl.rediris.es
@@ -132,8 +124,6 @@ iadb2.isipp.com
 images.rbl.msrbl.net
 intruders.docs.uu.se
 ip.v4bl.org
-ip4.white.polspam.pl
-ip6.white.polspam.pl
 ipbl.zeustracker.abuse.ch
 ips.whitelisted.org
 ipv6.all.dnsbl.bit.nl
@@ -149,8 +139,6 @@ l2.apews.org
 l2.bbfh.ext.sorbs.net
 l3.bbfh.ext.sorbs.net
 l4.bbfh.ext.sorbs.net
-lblip4.rbl.polspam.pl
-lblip6.rbl.polspam.pl
 list.bbfh.org
 list.blogspambl.com
 mail-abuse.blacklist.jippg.org
@@ -207,8 +195,6 @@ rbl.suresupport.com
 rbl.tdk.net
 rbl.zenon.net
 rbl2.triumf.ca
-rblip4.rbl.polspam.pl
-rblip6.rbl.polspam.pl
 recent.dnsbl.sorbs.net
 recent.spam.dnsbl.sorbs.net
 relays.bl.gweep.ca

@@ -1,6 +1,10 @@
 #!/bin/bash
 
 verbose=false
+list=/etc/dnsbls
+badlist=/etc/dnsbls.bad
+knownbad="$(cat $badlist 2>/dev/null)"
+detected=""
 
 set -o pipefail
 
@@ -60,17 +64,26 @@ while read addr; do
                     done
                 fi
                 if [ -n "$output" ]; then
-                    echo "$host ($addr) is listed in $dnsbl"
-                    echo Lookup output:
-                    echo "$output"
-                    continue
+                    detected="$detected $dnsbl"
+                    if [[ ! "$knownbad" =~ $dnsbl ]]; then
+                        echo "$host ($addr) is listed in $dnsbl"
+                        echo Lookup output:
+                        echo "$output"
+                        continue
+                    fi
                 fi
             fi
         fi
         if $verbose; then
             echo "$host ($addr) is not listed in $dnsbl"
         fi
-    done < /etc/dnsbls
+    done < $list
 done < /tmp/both.$$
+
+for dnsbl in $knownbad; do
+    if [[ ! "$detected" =~ $hn ]]; then
+        echo "$dnsbl is in $badlist but we are not currently listed there"
+    fi
+done
 
 rm -f /tmp/*.$$

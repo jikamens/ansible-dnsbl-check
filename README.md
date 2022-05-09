@@ -15,6 +15,8 @@ As an alternative to steps 2 and 3 above, you can copy the script directly to `/
 
 The Ansible playbook uses the latter approach. To use the playbook, the host(s) you want to install the script on need to be listed in an inventory group called `dnsbl_check_hosts`. The playbook attempts to be compatible with both DEB- and RPM-based Linux distributions.
 
+If you end up listed in a DNSBL and there's nothing you can do about it and you don't want to keep learning about it, then create /etc/dnsbls.bad and copy the host name of the bad DNSBL from /etc/dnsbls into /etc/dnsbls.bad, and then you won't get alerted about it anymore, but if/when you _stop_ being listed in that DNSBL you'll be notified about that.
+
 All of the code here is pretty straightforward, so if you have any other questions the first thing to do is read the code. If that doesn't work, you can [start a discussion][discussions] or [create an issue][issues].
 
 The code lives in [GitHub][github].

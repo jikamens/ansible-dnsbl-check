@@ -81,7 +81,7 @@ while read addr; do
 done < /tmp/both.$$
 
 for dnsbl in $knownbad; do
-    if [[ ! "$detected" =~ $hn ]]; then
+    if [[ ! "$detected" =~ $dnsbl ]]; then
         echo "$dnsbl is in $badlist but we are not currently listed there"
     fi
 done

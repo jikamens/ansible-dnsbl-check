@@ -28,7 +28,6 @@ bl.mav.com.br
 bl.mipspace.com
 bl.nordspam.com 127.0.0.1
 bl.nosolicitado.org
-bl.nszones.com
 bl.octopusdns.com
 bl.scientificspam.net
 bl.score.senderscore.com
@@ -102,7 +101,6 @@ dul.dnsbl.borderware.com
 dul.dnsbl.sorbs.net
 dul.pacifier.net
 dul.ru
-dyn.nszones.com
 dyna.spamrats.com
 escalations.dnsbl.sorbs.net
 eswlrev.dnsbl.rediris.es
@@ -211,7 +209,6 @@ sa.senderbase.org
 safe.dnsbl.prs.proofpoint.com
 safe.dnsbl.sorbs.net
 sbl-xbl.spamhaus.org
-sbl.nszones.com
 sbl.spamdown.org
 sbl.spamhaus.org
 schizo-bl.kundenserver.de
@@ -262,7 +259,6 @@ whitelist.rbl.ispa.at
 whitelist.sci.kun.nl
 whitelist.surriel.com
 wl.mailspike.net
-wl.nszones.com
 work.drbl.caravan.ru
 work.drbl.gremlin.ru
 wormrbl.imp.ch

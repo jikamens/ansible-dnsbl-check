@@ -3,7 +3,9 @@
 verbose=false
 list=/etc/dnsbls
 badlist=/etc/dnsbls.bad
-knownbad="$(cat $badlist 2>/dev/null)"
+ignorelist=/etc/dnsbls.ignore
+knownbad="$(cat $badlist 2>/dev/null || true)"
+ignored="$(cat $ignorelist 2>/dev/null || true)"
 detected=""
 
 set -o pipefail
@@ -51,6 +53,9 @@ comm -12 /tmp/resolved.$$ /tmp/ifconfig.$$ >| /tmp/both.$$
 while read addr; do
     reverse_ip=`addrtoquery "$addr"`
     while read dnsbl ok_results; do
+        if [[ "$ignored" =~ $dnsbl ]]; then
+            continue
+        fi
         if output="$(host -W 5 $reverse_ip.$dnsbl 8.8.8.8 2>&1 |
                      grep 'has address')"; then
             if [ -n "$output" ]; then

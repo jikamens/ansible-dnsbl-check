@@ -2,24 +2,29 @@
 - hosts:
   - dnsbl_check_hosts
   tasks:
-  - package:
+  - name: install needed packages
+    package:
       name:
       - coreutils
       - curl
       - gawk
       - perl
 
-  - apt: name=bind9-host
+  - name: install Ubuntu-specific packages
+    apt: name=bind9-host
     when: ansible_distribution == 'Ubuntu'
 
-  - yum: name=bind-utils
+  - name: install RPM-specific packages
+    yum: name=bind-utils
     when: ansible_distribution == 'CentOS' or ansible_distribution == 'Fedora'
 
-  - copy:
+  - name: install /etc/dnsbls
+    copy:
       src: dnsbls
       dest: /etc/dnsbls
 
-  - copy:
+  - name: install /etc/cron.hourly/dnsbl-check
+    copy:
       src: dnsbl-check.sh
       dest: /etc/cron.hourly/dnsbl-check
       mode: 0755

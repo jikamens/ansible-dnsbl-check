@@ -56,8 +56,9 @@ while read addr; do
         if [[ "$ignored" =~ $dnsbl ]]; then
             continue
         fi
+        # 127.255 is for DNSBL errors, not listings
         if output="$(host -W 5 $reverse_ip.$dnsbl 8.8.8.8 2>&1 |
-                     grep 'has address')"; then
+                     grep 'has address' | grep -v 'has address 127\.255')"; then
             if [ -n "$output" ]; then
                 if [ -n "$ok_results" ]; then
                     dnsbl_addr="$(echo "$output" | awk 'NR==1{print $NF}')"

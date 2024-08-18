@@ -36,6 +36,7 @@ bl.mipspace.com
 bl.nordspam.com 127.0.0.1
 bl.nosolicitado.org
 bl.octopusdns.com
+bl.rbl.debacom.pl
 bl.scientificspam.net
 bl.score.senderscore.com
 bl.spamcop.net
@@ -176,6 +177,7 @@ list.blogspambl.com
 mail-abuse.blacklist.jippg.org
 mailsl.dnsbl.rjek.com
 misc.dnsbl.sorbs.net
+mix.ascams.com
 msgid.bl.gweep.ca
 mtawlrev.dnsbl.rediris.es
 multi.surbl.org

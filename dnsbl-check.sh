@@ -57,28 +57,43 @@ while read addr; do
             continue
         fi
         # 127.255 is for DNSBL errors, not listings
-        if output="$(host -W 5 $reverse_ip.$dnsbl 8.8.8.8 2>&1 |
-                     grep 'has address' | grep -v 'has address 127\.255')"; then
-            if [ -n "$output" ]; then
-                if [ -n "$ok_results" ]; then
-                    dnsbl_addr="$(echo "$output" | awk 'NR==1{print $NF}')"
-                    for ok_addr in $ok_results; do
-                        if [ "$ok_addr" = "$dnsbl_addr" ]; then
-                            output=""
-                            break
-                        fi
-                    done
+	if (! host -W 5 $reverse_ip.$dnsbl 8.8.8.8 >| /tmp/host.$$ 2>&1 ||
+		grep -q -s 'has address 127\.255' /tmp/host.$$) &&
+	       # The query may have failed because the DNSBL doesn't allow
+	       # querying through 8.8.8.8, so fall back on querying through the
+	       # local nameserver. Depending on the TTL on the record this
+	       # might cause us to think we're listed for longer than we
+	       # actually are, but that is worth the cost for the sake of
+	       # being able to detect the listing.
+	       (! host -W 5 $reverse_ip.$dnsbl >| /tmp/host.$$ 2>&1 ||
+		    grep -q -s 'has address 127\.255' /tmp/host.$$); then
+	    if ! grep -q -s -w NXDOMAIN /tmp/host.$$; then
+		if $verbose; then
+		    echo "Error looking up $addr in $dnsbl:" 1>&2
+		    cat /tmp/host.$$ 1>&2
+		fi
+		continue
+	    fi
+        elif output="$(grep 'has address' /tmp/host.$$)"; then
+	    if [ -n "$ok_results" ]; then
+		dnsbl_addr="$(echo "$output" | awk 'NR==1{print $NF}')"
+		for ok_addr in $ok_results; do
+		    if [ "$ok_addr" = "$dnsbl_addr" ]; then
+			output=""
+			break
+		    fi
+		done
+                if [ -z "$output" ]; then
+                    continue
                 fi
-                if [ -n "$output" ]; then
-                    detected="$detected $dnsbl"
-                    if [[ ! "$knownbad" =~ $dnsbl ]]; then
-                        echo "$host ($addr) is listed in $dnsbl"
-                        echo Lookup output:
-                        echo "$output"
-                        continue
-                    fi
-                fi
-            fi
+	    fi
+	    detected="$detected $dnsbl"
+	    if [[ ! "$knownbad" =~ $dnsbl ]]; then
+		echo "$host ($addr) is listed in $dnsbl"
+		echo Lookup output:
+		echo "$output"
+		continue
+	    fi
         fi
         if $verbose; then
             echo "$host ($addr) is not listed in $dnsbl"

@@ -45,6 +45,7 @@ bl.mipspace.com
 bl.nordspam.com 127.0.0.1
 bl.nosolicitado.org
 bl.octopusdns.com
+bl.pcready.me
 bl.rbl.debacom.pl
 bl.reynolds.net.au
 bl.scientificspam.net
@@ -303,6 +304,7 @@ rbl.tdk.net
 rbl.triumf.ca
 rbl.zenon.net
 rbl2.triumf.ca
+rblproxy.clientnshosting.net
 rdts.bl.reynolds.net.au
 relayips.rbl.shub-inter.net
 relays.bl.gweep.ca

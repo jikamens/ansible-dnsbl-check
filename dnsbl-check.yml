@@ -12,11 +12,11 @@
 
   - name: install Ubuntu-specific packages
     apt: name=bind9-host
-    when: ansible_distribution == 'Ubuntu'
+    when: ansible_facts['distribution'] == 'Ubuntu'
 
   - name: install RPM-specific packages
     yum: name=bind-utils
-    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Fedora'
+    when: ansible_facts['distribution'] in ['CentOS', 'Fedora']
 
   - name: install /etc/dnsbls
     copy:

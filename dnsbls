@@ -309,7 +309,6 @@ relays.mail-abuse.org
 relays.nether.net
 relays.radparker.com
 relays.sandes.dk
-rep.mailspike.net
 reputation-domain.rbl.scrolloutf1.com
 reputation-ip.rbl.scrolloutf1.com
 reputation-ns.rbl.scrolloutf1.com
@@ -405,7 +404,6 @@ web.rbl.msrbl.net
 whitelist.rbl.ispa.at
 whitelist.sci.kun.nl
 whois.rfc-ignorant.org
-wl.mailspike.net
 wl.summersault.com
 wl.trusted-forwarder.org
 work.drbl.caravan.ru
